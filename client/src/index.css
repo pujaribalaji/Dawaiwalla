@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* font-family: 'Poppins', sans-serif; */
+/* font-family: 'Playfair Display', serif; */
+
+/* //navbar css */
+.navbar {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  line-height: 26px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 6px -6px gray;
+  --webkit-box-shadow: 0 8px 6px -6px gray;
+  border-bottom: solid gray !important;
+}
+
+.nav-link {
+  font-weight: 300 !important;
+}
+
+.active {
+  border-bottom: 2px solid black;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-family: "roboto", sans-serif;
+  letter-spacing: 3px;
+}
+/* =============================
+==========footer============= */
+
+.footer {
+  color: white;
+  padding: 25px;
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000);
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.footer a:hover {
+  color: #ffefba;
+  border-bottom: 1px solid #ffefba;
+}
+/* =================================
+======== page not found css ======= */
+.pnf {
+  display: flex;
+  min-height: 65vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pnf-title {
+  font-size: 100px;
+  font-weight: 700;
+}
+
+.pnf-heading {
+  font-weight: normal;
+}
+
+.pnf-btn {
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 10px;
+  margin-top: 10px;
+}
+.pnf-btn:hover {
+  background-color: black;
+  color: white;
+}
+/* ========================================= */
+/* =========contact us ========= */
+.contactus {
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.termsandconditions {
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ==================== */
+.product-link {
+  text-decoration: none !important;
+  color: black !important;
+}
+/* 
+.carousel-indicators  button {
+  border-radius: 50%;
+  width: 7px;
+  height: 6px;
+  background-color: #404040;
+} */
+#myCarousel-indicators > button {
+  border-radius: 50%;
+  width: 7px;
+  height: 6px;
+  background-color: #404040;
+}
+
+
+/* ======== order on call =========== */
+.modal-wrapper{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(189, 189, 189, 0.9);
+}
+
+.modal-container{
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 20rem;
+  padding: 2rem 2rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+}
+
+.modal-btn{
+  position: fixed;
+  top:50%;
+  right: -90px;
+  transform: translateZ(-50%);
+  -webkit-transform: translateY(-50%) ;
+  -ms-transform: translateY(-50%) ;
+  transform: rotateZ(-90deg);
+  padding: 0.1rem .7rem;
+  font-size: 18px;
+  border: none;
+  border-radius: 0.3rem;
+  border-top-right-radius: 2rem;
+  /* border-top-left-radius: 2rem; */
+  border-bottom-left-radius: 2rem;
+  background-color: #0154b3;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Work Sans", sans-serif;
+  z-index: 10;  /*if you want to show the order on call after clicked then use this*/
+}
+/* .modal-btn{
+  padding: 0.6rem 1.4rem;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: #212121;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Work Sans", sans-serif;
+  transform: scale(0.9);
+} */
+
+.modal-btn:hover{
+ background-color: #60a4f3;;
+ color: #212121;
+ transform: scale(1);
+ transform: rotateZ(-90deg);
+ transition: all 0.2s;
+ /* box-shadow: rgba(155, 155, 155, 0.16) 0px 1px 4px, rgb(119, 118, 118) 0px 0px 0px 3px ; */
+}
