@@ -89,7 +89,7 @@ filters
   }
   .small .col-sm {
     flex: 0 0 auto;
-    width: 100%;
+    width: 45%;
     max-width: 100%;
     white-space: nowrap;
   }
