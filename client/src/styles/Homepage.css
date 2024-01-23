@@ -80,16 +80,6 @@ filters
   font-size: 20px !important;
 }
 
-.horizontal-scroll {
-  overflow-x: auto;
-  white-space: nowrap;
-}
-.small {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
 @media (max-width: 767px) {
   .small {
     display: flex;

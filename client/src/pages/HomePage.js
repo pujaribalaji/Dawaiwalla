@@ -8,6 +8,8 @@ import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
+import { Collapse } from "antd";
+const { Panel } = Collapse;
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -332,29 +334,35 @@ const HomePage = () => {
       {/* (Filter + All Products) section  */}
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
-          <h4 className="text-center">Filter By Category</h4>
-          {/* Filter section */}
-          <div className="d-flex flex-column">
-            {categories?.map((c) => (
-              <Checkbox
-                key={c._id}
-                onChange={(e) => handleFilter(e.target.checked, c._id)}
-              >
-                {c.name}
-              </Checkbox>
-            ))}
-          </div>
-          {/* price filter */}
-          <h4 className="text-center mt-4">Filter By Price</h4>
-          <div className="d-flex flex-column">
-            <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-              {Prices?.map((p) => (
-                <div key={p._id}>
-                  <Radio value={p.array}>{p.name}</Radio>
+          <Collapse defaultActiveKey={["1"]}>
+            <Panel header="Filter By Category" key="1">
+              {/* Filter section */}
+              <div className="d-flex flex-column">
+                {categories?.map((c) => (
+                  <Checkbox
+                    key={c._id}
+                    onChange={(e) => handleFilter(e.target.checked, c._id)}
+                  >
+                    {c.name}
+                  </Checkbox>
+                ))}
+              </div>
+            </Panel>
+            <Collapse defaultActiveKey={["2"]}>
+              <Panel header="Filter By Price" key="2">
+                {/* price filter */}
+                <div className="d-flex flex-column">
+                  <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+                    {Prices?.map((p) => (
+                      <div key={p._id}>
+                        <Radio value={p.array}>{p.name}</Radio>
+                      </div>
+                    ))}
+                  </Radio.Group>
                 </div>
-              ))}
-            </Radio.Group>
-          </div>
+              </Panel>
+            </Collapse>
+          </Collapse>
           <div className="d-flex flex-column">
             <button
               className="btn btn-danger"
