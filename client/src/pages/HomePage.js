@@ -26,7 +26,9 @@ const HomePage = () => {
   //get all cat
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get(
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/category/get-category"
+      );
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -43,7 +45,9 @@ const HomePage = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-list/${page}`
+      );
       setLoading(false);
       setProducts(data.products);
     } catch (error) {
@@ -55,7 +59,9 @@ const HomePage = () => {
   //getTOtal COunt
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await axios.get(
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-count"
+      );
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -70,7 +76,9 @@ const HomePage = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-list/${page}`
+      );
       setLoading(false);
       setProducts([...products, ...data?.products]);
     } catch (error) {
@@ -100,10 +108,13 @@ const HomePage = () => {
   //get filterd product
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post("/api/v1/product/product-filters", {
-        checked,
-        radio,
-      });
+      const { data } = await axios.post(
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-filters",
+        {
+          checked,
+          radio,
+        }
+      );
       setProducts(data?.products);
     } catch (error) {
       console.log(error);
@@ -115,7 +126,7 @@ const HomePage = () => {
     const fetchBanners = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/v1/banner/get-banners"
+          "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/get-banners"
         );
         console.log("Banners API response:", response);
         if (response.data?.success) {
@@ -174,7 +185,7 @@ const HomePage = () => {
               data-bs-interval={10000}
             >
               <img
-                src={`http://localhost:8080/api/v1/banner/banner-image/${banner._id}`}
+                src={`https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/banner-image/${banner._id}`}
                 className="d-block w-100 img-thumbnail"
                 alt={banner.altText}
               />
@@ -380,7 +391,7 @@ const HomePage = () => {
             {products?.map((p) => (
               <div className="card m-2" key={p._id}>
                 <img
-                  src={`/api/v1/product/product-photo/${p._id}`}
+                  src={`https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />

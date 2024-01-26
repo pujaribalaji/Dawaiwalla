@@ -16,7 +16,7 @@ const DiabeticCategoryPage = () => {
   const getDiabeticCategoryProducts = async () => {
     try {
       const { data } = await axios.get(
-        "/api/v1/product/product-category/diabetic"
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-category/diabetic"
       );
       setDiabeticProducts(data.products || []);
     } catch (error) {
@@ -34,7 +34,7 @@ const DiabeticCategoryPage = () => {
               {DiabeticProducts.map((product) => (
                 <div className="card m-2" key={product._id}>
                   <img
-                    src={`/api/v1/product/product-photo/${product._id}`}
+                    src={`https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-photo/${product._id}`}
                     className="card-img-top"
                     alt={product.name}
                   />

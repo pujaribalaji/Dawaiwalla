@@ -12,7 +12,7 @@ const BannersLists = () => {
   const getAllBanners = async () => {
     try {
       const { data } = await axios.get(
-        "https://dawaiwalla-backend.onrender.com/api/v1/banner/get-banners"
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/get-banners"
       );
       setBanners(data.banners);
     } catch (error) {
@@ -25,7 +25,7 @@ const BannersLists = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `https://dawaiwalla-backend.onrender.com/api/v1/banner/delete-banner/${id}`
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/delete-banner/${id}`
       );
       toast.success("Banner Deleted Successfully");
       getAllBanners(); // Refresh the banner list after deletion
@@ -53,7 +53,7 @@ const BannersLists = () => {
               <div key={index} className="banner-link">
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`https://dawaiwalla-backend.onrender.com/api/v1/banner/banner-image/${banner._id}`}
+                    src={`https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/banner-image/${banner._id}`}
                     className="card-img-top"
                     alt={banner.name}
                   />

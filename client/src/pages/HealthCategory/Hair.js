@@ -15,7 +15,9 @@ const HairCategoryPage = () => {
 
   const getHairCategoryProducts = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-category/hair");
+      const { data } = await axios.get(
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-category/hair"
+      );
       setHairProducts(data.products || []);
     } catch (error) {
       console.error("Error fetching Hair category products:", error);
@@ -32,7 +34,7 @@ const HairCategoryPage = () => {
               {HairProducts.map((product) => (
                 <div className="card m-2" key={product._id}>
                   <img
-                    src={`/api/v1/product/product-photo/${product._id}`}
+                    src={`https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-photo/${product._id}`}
                     className="card-img-top"
                     alt={product.name}
                   />

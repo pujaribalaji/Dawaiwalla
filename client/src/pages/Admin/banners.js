@@ -36,7 +36,7 @@ const Banners = () => {
 
           axios
             .post(
-              "https://dawaiwalla-backend.onrender.com/api/v1/banner/create-banner",
+              "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/create-banner",
               bannerData,
               {
                 headers: {
@@ -63,15 +63,6 @@ const Banners = () => {
       toast.error("Something went wrong");
     }
   };
-
-  // Validate the resolution of the selected photo
-  // const validateResolution = (selectedPhoto) => {
-  //   const resolutionError =
-  //     selectedPhoto.width !== 1920 || selectedPhoto.height !== 450
-  //       ? "Banner photo must be in 1920x450 resolution."
-  //       : null;
-  //   return resolutionError;
-  // };
 
   return (
     <Layout title={"Dashboard - Create Banner"}>

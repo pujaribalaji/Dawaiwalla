@@ -20,7 +20,7 @@ const UpdateBanner = () => {
     const getSingleBanner = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8080/api/v1/banner/get-banner/${params.slug}`
+          `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/get-banner/${params.slug}`
         );
         setAltText(data.banner.altText);
         setCaption(data.banner.caption);
@@ -43,7 +43,7 @@ const UpdateBanner = () => {
       photo && bannerData.append("photo", photo);
 
       const { data } = await axios.put(
-        `http://localhost:8080/api/v1/banner/update-banner/${id}`,
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/update-banner/${id}`,
         bannerData
       );
 
@@ -67,7 +67,7 @@ const UpdateBanner = () => {
       if (!answer) return;
 
       await axios.delete(
-        `http://localhost:8080/api/v1/banner/delete-banner/${id}`
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/delete-banner/${id}`
       );
 
       toast.success("Banner Deleted Successfully");
@@ -105,7 +105,7 @@ const UpdateBanner = () => {
                   src={
                     photo
                       ? URL.createObjectURL(photo)
-                      : `http://localhost:8080/api/v1/banner/banner-image/${id}`
+                      : `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/banner-image/${id}`
                   }
                   alt="banner_photo"
                   height={"200px"}

@@ -24,7 +24,7 @@ const UpdateProduct = () => {
   const getSingleProduct = async () => {
     try {
       const { data } = await axios.get(
-        `https://dawaiwalla-backend.onrender.com/api/v1/product/get-product/${params.slug}`
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/get-product/${params.slug}`
       );
       setName(data.product.name);
       setId(data.product._id);
@@ -46,7 +46,7 @@ const UpdateProduct = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
-        "https://dawaiwalla-backend.onrender.com/api/v1/category/get-category"
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/category/get-category"
       );
       if (data?.success) {
         setCategories(data?.category);
@@ -73,7 +73,7 @@ const UpdateProduct = () => {
       photo && productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.put(
-        `https://dawaiwalla-backend.onrender.com/api/v1/product/update-product/${id}`,
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/update-product/${id}`,
         productData
       );
       if (data?.success) {
@@ -94,7 +94,7 @@ const UpdateProduct = () => {
       let answer = window.prompt("Are You Sure want to delete this product ? ");
       if (!answer) return;
       const { data } = await axios.delete(
-        `https://dawaiwalla-backend.onrender.com/api/v1/product/delete-product/${id}`
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/delete-product/${id}`
       );
       toast.success("Product DEleted Succfully");
       navigate("/dashboard/admin/products");
@@ -155,7 +155,7 @@ const UpdateProduct = () => {
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`https://dawaiwalla-backend.onrender.com/api/v1/product/product-photo/${id}`}
+                      src={`https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-photo/${id}`}
                       alt="product_photo"
                       height={"200px"}
                       className="img img-responsive"
