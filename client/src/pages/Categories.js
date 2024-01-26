@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useCategory from "../hooks/useCategory";
 import Layout from "../components/Layout/Layout";
 const Categories = () => {
-  const allCategory = useCategory();
+  const allCategory = useCategory([]);
   return (
     <Layout title={"All Category - Dawaiwalla"}>
       <div className="container" style={{ marginTop: "100px" }}>
