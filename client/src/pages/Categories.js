@@ -10,10 +10,7 @@ const Categories = () => {
           {allCategory.map((c) => (
             <div className="col-md-4 mt-5 mb-3 gx-3 gy-3" key={c._id}>
               <div className="card">
-                <Link
-                  to={`https://dawaiwalla-backend.onrender.com/category/${c.slug}`}
-                  className="btn cat-btn"
-                >
+                <Link to={`/category/${c.slug}`} className="btn cat-btn">
                   {c.name}
                 </Link>
               </div>
