@@ -33,6 +33,8 @@ import HairCategoryPage from "./pages/HealthCategory/Hair";
 import EyesCategoryPage from "./pages/HealthCategory/Eye-ear";
 import StomachCategoryPage from "./pages/HealthCategory/Stomach";
 import Banners from "./pages/Admin/banners";
+import BannersLists from "./pages/Admin/BannersList";
+import UpdateBanner from "./pages/Admin/UpdateBanner";
 
 function App() {
   return (
@@ -73,6 +75,11 @@ function App() {
           <Route path="admin/create-pincode" element={<CreatePincode />} />
           {/* <Route path="admin/users" element={<Users />} /> */}
           <Route path="admin/banner" element={<Banners />} />
+          <Route path="admin/bannerslist" element={<BannersLists />} />
+          <Route
+            path="admin/bannerslist/updatebanner"
+            element={<UpdateBanner />}
+          />
         </Route>
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPasssword />} />

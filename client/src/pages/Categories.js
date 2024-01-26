@@ -5,12 +5,15 @@ const Categories = () => {
   const allCategory = useCategory();
   return (
     <Layout title={"All Category - Dawaiwalla"}>
-      <div className="container">
-        <div className="row">
+      <div className="container" style={{ marginTop: "100px" }}>
+        <div className="row container">
           {allCategory.map((c) => (
             <div className="col-md-4 mt-5 mb-3 gx-3 gy-3" key={c._id}>
               <div className="card">
-                <Link to={`/category/${c.slug}`} className="btn cat-btn">
+                <Link
+                  to={`http://localhost:8080/category/${c.slug}`}
+                  className="btn cat-btn"
+                >
                   {c.name}
                 </Link>
               </div>

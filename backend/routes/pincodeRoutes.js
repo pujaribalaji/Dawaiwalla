@@ -1,12 +1,12 @@
 import express from "express";
-import { isAdmin, requireSignIn } from "./../middlewares/authMiddleware.js";
+import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import {
   pincodeControlller,
   createPincodeController,
   deletePincodeController,
   singlePincodeController,
   updatePincodeController,
-} from "./../controllers/pincodeController.js";
+} from "../controllers/pincodeController.js";
 
 const router = express.Router();
 

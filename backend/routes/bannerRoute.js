@@ -13,7 +13,7 @@ import {
 const router = express.Router();
 
 // Routes for banner operations
-router.post("/create-banner", requireSignIn, isAdmin, createBannerController);
+router.post("/create-banners", requireSignIn, isAdmin, createBannerController);
 router.put(
   "/update-banner/:id",
   requireSignIn,

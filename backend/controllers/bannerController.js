@@ -103,20 +103,29 @@ export const bannerImageController = async (req, res) => {
 // Update a banner
 export const updateBannerController = async (req, res) => {
   try {
-    const { imageSrc, altText, caption } = req.fields;
+    const { altText, caption } = req.fields;
     const { photo } = req.files;
 
     // Validation
-    if (!imageSrc || !altText || !caption) {
-      return res.status(500).send({ error: "All fields are required" });
+    if (!altText || !caption) {
+      return res
+        .status(500)
+        .send({ error: "Alt text and caption are required fields" });
     }
 
-    const banner = await Banner.findByIdAndUpdate(
-      req.params.id,
-      { ...req.fields },
-      { new: true }
-    );
+    const banner = await Banner.findById(req.params.id);
 
+    if (!banner) {
+      return res
+        .status(404)
+        .send({ success: false, message: "Banner not found" });
+    }
+
+    // Update fields
+    banner.altText = altText;
+    banner.caption = caption;
+
+    // If a new image is provided, update the image
     if (photo) {
       banner.image.data = fs.readFileSync(photo.path);
       banner.image.contentType = photo.type;
@@ -142,7 +151,8 @@ export const updateBannerController = async (req, res) => {
 // Delete a banner
 export const deleteBannerController = async (req, res) => {
   try {
-    await Banner.findByIdAndDelete(req.params.id).select("-image");
+    const { id } = req.params;
+    await Banner.findByIdAndDelete(id);
     res.status(200).send({
       success: true,
       message: "Banner Deleted successfully",

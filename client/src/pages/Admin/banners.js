@@ -12,36 +12,66 @@ const Banners = () => {
   const [photo, setPhoto] = useState("");
 
   // create banner function
-  // Update handleCreateBanner function
+  // create banner function
   const handleCreateBanner = async (e) => {
     e.preventDefault();
+
     try {
-      const bannerData = new FormData();
-      bannerData.append("altText", altText);
-      bannerData.append("caption", caption);
-      bannerData.append("photo", photo);
+      // Validate banner dimensions
+      if (photo) {
+        const image = new Image();
+        image.src = URL.createObjectURL(photo);
 
-      const { data } = await axios.post(
-        "http://localhost:8080/api/v1/banner/create-banner",
-        bannerData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+        image.onload = function () {
+          if (image.width !== 1920 || image.height !== 450) {
+            toast.error("Banner dimensions must be 1920px x 450px");
+            return;
+          }
 
-      if (data?.success) {
-        toast.success(data?.message);
-        navigate("/dashboard/admin/banner");
-      } else {
-        toast.error("Failed to create banner");
+          // Proceed with banner creation if dimensions are correct
+          const bannerData = new FormData();
+          bannerData.append("altText", altText);
+          bannerData.append("caption", caption);
+          bannerData.append("photo", photo);
+
+          axios
+            .post(
+              "https://dawaiwalla-backend.onrender.com/api/v1/banner/create-banner",
+              bannerData,
+              {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              }
+            )
+            .then(({ data }) => {
+              if (data?.success) {
+                toast.success(data?.message);
+                navigate("/");
+              } else {
+                toast.error("Failed to create banner");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              toast.error("Something went wrong");
+            });
+        };
       }
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
     }
   };
+
+  // Validate the resolution of the selected photo
+  // const validateResolution = (selectedPhoto) => {
+  //   const resolutionError =
+  //     selectedPhoto.width !== 1920 || selectedPhoto.height !== 450
+  //       ? "Banner photo must be in 1920x450 resolution."
+  //       : null;
+  //   return resolutionError;
+  // };
 
   return (
     <Layout title={"Dashboard - Create Banner"}>

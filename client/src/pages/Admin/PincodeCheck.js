@@ -16,9 +16,12 @@ const CreatePincode = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/pincode/create-pincode", {
-        name,
-      });
+      const { data } = await axios.post(
+        "https://dawaiwalla-backend.onrender.com/api/v1/pincode/create-pincode",
+        {
+          name,
+        }
+      );
       if (data?.success) {
         toast.success(`${name} is created`);
         getAllPincode(); // getAllCategory();  changed to getAllPincode()
@@ -34,7 +37,9 @@ const CreatePincode = () => {
   //get all pincode
   const getAllPincode = async () => {
     try {
-      const { data } = await axios.get("/api/v1/pincode/get-pincode");
+      const { data } = await axios.get(
+        "https://dawaiwalla-backend.onrender.com/api/v1/pincode/get-pincode"
+      );
       if (data?.success) {
         setPincode(data?.pincode);
       }
@@ -53,7 +58,7 @@ const CreatePincode = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `/api/v1/pincode/update-pincode/${selected._id}`,
+        `https://dawaiwalla-backend.onrender.com/api/v1/pincode/update-pincode/${selected._id}`,
         { name: updatedName }
       );
       if (data.success) {
@@ -73,7 +78,7 @@ const CreatePincode = () => {
   const handleDelete = async (pId) => {
     try {
       const { data } = await axios.delete(
-        `/api/v1/pincode/delete-pincode/${pId}`
+        `https://dawaiwalla-backend.onrender.com/api/v1/pincode/delete-pincode/${pId}`
       );
       if (data.success) {
         toast.success(`Pincode is deleted`);

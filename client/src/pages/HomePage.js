@@ -115,7 +115,7 @@ const HomePage = () => {
     const fetchBanners = async () => {
       try {
         const response = await axios.get(
-          "https://dawaiwalla-backend.onrender.com/api/v1/banner/get-banners"
+          "http://localhost:8080/api/v1/banner/get-banners"
         );
         console.log("Banners API response:", response);
         if (response.data?.success) {
@@ -174,7 +174,7 @@ const HomePage = () => {
               data-bs-interval={10000}
             >
               <img
-                src={`https://dawaiwalla-backend.onrender.com/api/v1/banner/banner-image/${banner._id}`}
+                src={`http://localhost:8080/api/v1/banner/banner-image/${banner._id}`}
                 className="d-block w-100 img-thumbnail"
                 alt={banner.altText}
               />

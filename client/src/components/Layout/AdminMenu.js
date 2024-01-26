@@ -34,6 +34,12 @@ const AdminMenu = () => {
             to="/dashboard/admin/banner"
             className="list-group-item list-group-item-action"
           >
+            Create Banners
+          </NavLink>
+          <NavLink
+            to="/dashboard/admin/BannersList"
+            className="list-group-item list-group-item-action"
+          >
             Banners
           </NavLink>
         </div>
