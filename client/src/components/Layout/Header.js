@@ -36,10 +36,11 @@ const Header = () => {
           >
             <span className="navbar-toggler-icon" />
           </button>
+
+          <Link to="/" className="navbar-brand">
+            🛒 DawaiWalla
+          </Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand">
-              🛒 DawaiWalla
-            </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <Modal />
             </ul>

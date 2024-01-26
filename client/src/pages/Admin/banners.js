@@ -12,50 +12,58 @@ const Banners = () => {
   const [photo, setPhoto] = useState("");
 
   // create banner function
-  // create banner function
+  // Update handleCreateBanner function
   const handleCreateBanner = async (e) => {
     e.preventDefault();
 
-    try {
-      // Validate banner dimensions
-      if (photo) {
+    if (photo) {
+      try {
         const image = new Image();
         image.src = URL.createObjectURL(photo);
 
-        image.onload = function () {
-          if (image.width !== 1920 || image.height !== 450) {
-            toast.error("Banner dimensions must be 1920px x 450px");
-            return;
-          }
+        await new Promise((resolve, reject) => {
+          image.onload = () => {
+            if (image.width === 1920 && image.height === 450) {
+              resolve();
+            } else {
+              reject(new Error("Banner dimensions must be 1920px x 450px."));
+            }
+          };
 
-          const bannerData = new FormData();
-          bannerData.append("altText", altText);
-          bannerData.append("caption", caption);
-          bannerData.append("photo", photo);
+          image.onerror = () => {
+            reject(new Error("Error loading the banner photo."));
+          };
+        });
+      } catch (error) {
+        toast.error(error.message);
+        return;
+      }
+    } else {
+      toast.error("Please select a banner photo.");
+      return;
+    }
 
-          axios
-            .post(
-              "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/create-banner",
-              bannerData,
-              {
-                headers: {
-                  "Content-Type": "multipart/form-data",
-                },
-              }
-            )
-            .then(({ data }) => {
-              if (data?.success) {
-                toast.success(data?.message);
-                navigate("/");
-              } else {
-                toast.error("Failed to create banner");
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-              toast.error("Something went wrong");
-            });
-        };
+    try {
+      const bannerData = new FormData();
+      bannerData.append("altText", altText);
+      bannerData.append("caption", caption);
+      bannerData.append("photo", photo);
+
+      const { data } = await axios.post(
+        "https://dawaiwalla-backend.onrender.com/api/v1/banner/create-banner",
+        bannerData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (data?.success) {
+        toast.success(data?.message);
+        navigate("/dashboard/admin/banner");
+      } else {
+        toast.error("Failed to create banner");
       }
     } catch (error) {
       console.log(error);
