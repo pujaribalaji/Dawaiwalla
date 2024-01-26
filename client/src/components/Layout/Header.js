@@ -55,19 +55,14 @@ const Header = () => {
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
-                  to={"https://dawaiwalla-backend-2pc2.onrender.com/categories"}
+                  to={"/categories"}
                   data-bs-toggle="dropdown"
                 >
                   Categories
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link
-                      className="dropdown-item"
-                      to={
-                        "https://dawaiwalla-backend-2pc2.onrender.com/categories"
-                      }
-                    >
+                    <Link className="dropdown-item" to={"/categories"}>
                       All Categories
                     </Link>
                   </li>
@@ -75,7 +70,7 @@ const Header = () => {
                     <li>
                       <Link
                         className="dropdown-item"
-                        to={`https://dawaiwalla-backend-2pc2.onrender.com/category/${c.slug}`}
+                        to={`/category/${c.slug}`}
                       >
                         {c.name}
                       </Link>
@@ -112,7 +107,7 @@ const Header = () => {
                     <ul className="dropdown-menu">
                       <li>
                         <NavLink
-                          to={`https://dawaiwalla-backend-2pc2.onrender.com/dashboard/${
+                          to={`/dashboard/${
                             auth?.user?.role === 1 ? "admin" : "user"
                           }`}
                           className="dropdown-item"
