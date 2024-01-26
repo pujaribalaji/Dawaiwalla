@@ -28,7 +28,6 @@ const Banners = () => {
             return;
           }
 
-          // Proceed with banner creation if dimensions are correct
           const bannerData = new FormData();
           bannerData.append("altText", altText);
           bannerData.append("caption", caption);
