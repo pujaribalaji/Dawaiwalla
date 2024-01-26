@@ -25,21 +25,29 @@ const Header = () => {
     <>
       <nav className="navbar navbar-expand-lg sticky-top bg-body-tertiary">
         <div className="container-fluid">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <div className="navbar-container">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarTogglerDemo01"
+              aria-controls="navbarTogglerDemo01"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+          </div>
+          <div className="navbar-brand-container">
             <Link to="/" className="navbar-brand">
               🛒 DawaiWalla
             </Link>
+          </div>
+          <div
+            className="collapse navbar-collapse"
+            id="navbarTogglerDemo01"
+            style={{ marginTop: 10 }}
+          >
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <Modal />
             </ul>
@@ -60,24 +68,21 @@ const Header = () => {
                 >
                   Categories
                 </Link>
-                <ul className="dropdown-menu">
+              </li>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link className="dropdown-item" to={"/categories"}>
+                    All Categories
+                  </Link>
+                </li>
+                {categories?.map((c) => (
                   <li>
-                    <Link className="dropdown-item" to={"/categories"}>
-                      All Categories
+                    <Link className="dropdown-item" to={`/category/${c.slug}`}>
+                      {c.name}
                     </Link>
                   </li>
-                  {categories?.map((c) => (
-                    <li>
-                      <Link
-                        className="dropdown-item"
-                        to={`/category/${c.slug}`}
-                      >
-                        {c.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
+                ))}
+              </ul>
 
               {!auth?.user ? (
                 <>
