@@ -1,4 +1,4 @@
-import Order from "../models/OrderModel";
+import Order from "../models/OrderModel.js";
 import fs from "fs";
 import dotenv from "dotenv";
 
