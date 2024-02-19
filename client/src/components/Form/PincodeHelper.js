@@ -12,7 +12,7 @@ const PincodeCheck = ({ closeModal, children, handleCloseButton }) => {
   return ReactDOM.createPortal(
     <>
       <div className="modal-wrapper" onClick={closeModal}></div>
-      <div className="modal-container">
+      <div className="modal-container" style={{zIndex:4}}>
         {children}
         {handleCloseButton}
       </div>

@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+// import { useAuth } from "../../context/auth";
 import "../styles/ProductDetailsStyles.css";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
+import { useAuth } from "../context/auth";
 
 const ProductDetails = () => {
   const params = useParams();
+  const [auth] = useAuth();
+  // const auth=useAuth
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
 
@@ -109,7 +113,7 @@ const ProductDetails = () => {
               />
               Share
             </button>
-            <button
+            {auth.user && auth.user.role==1?(''):(<button
               className="btn btn-dark ms-3"
               onClick={() => {
                 setCart([...cart, product]);
@@ -126,7 +130,8 @@ const ProductDetails = () => {
               }}
             >
               ADD TO CART
-            </button>{" "}
+            </button>)}
+            {" "}
           </div>
         </div>
       </div>

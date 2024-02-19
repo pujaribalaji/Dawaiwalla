@@ -18,10 +18,12 @@
   box-shadow: 0 8px 6px -6px gray;
   --webkit-box-shadow: 0 8px 6px -6px gray;
   border-bottom: solid gray !important;
+  
 }
 
 .nav-link {
   font-weight: 300 !important;
+  
 }
 
 .active {
@@ -33,6 +35,7 @@
   justify-content: space-between;
   width: fit-content;
   /* width: fit-content; */
+  
 }
 
 .navbar-brand-container {
@@ -42,6 +45,8 @@
   /* align-items: center; */
   margin: auto;
   width: fit-content;
+  
+  
 }
 
 .navbar-brand {
@@ -50,6 +55,7 @@
   letter-spacing: 3px;
   align-self: center;
   margin: auto;
+  
 }
 /* =============================
 ==========footer============= */
@@ -174,6 +180,7 @@
   padding: 2rem 2rem;
   border-radius: 0.5rem;
   background-color: #fff;
+  
 }
 
 .modal-btn {

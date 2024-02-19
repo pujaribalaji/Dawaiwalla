@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
 import { Collapse } from "antd";
+import { useAuth } from "../context/auth";
 const { Panel } = Collapse;
 
 const HomePage = () => {
@@ -22,7 +23,17 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [banners, setBanners] = useState([]);
-
+  const [auth, setAuth] = useAuth();
+  const [addProduct,setAddProduct]=useState();
+  useEffect(()=>{
+    console.log(auth)
+    // if(auth && auth.user && auth.user.role!=1){
+    //   console.log("Not Admin")
+    // }
+    // else{
+    //   console.log("Admin nhai")
+    // }
+  },[,auth])
   //get all cat
   const getAllCategory = async () => {
     try {
@@ -343,8 +354,8 @@ const HomePage = () => {
       <br />
 
       {/* (Filter + All Products) section  */}
-      <div className="container-fluid row mt-3 home-page">
-        <div className="col-md-3 filters">
+      <div className="container-fluid row mt-3 home-page center-section">
+        <div className="col-md-3 filters mx-auto">
           <Collapse defaultActiveKey={["1"]}>
             <Panel header="Filter By Category" key="1">
               {/* Filter section */}
@@ -387,15 +398,18 @@ const HomePage = () => {
         {/* All Products Section */}
         <div className="col-md-9">
           <h1 className="text-center">All Products</h1>
-          <div className="d-flex justify-content-center gap-5 flex-wrap">
+          {/* <div className="d-flex justify-content-center gap-5 flex-wrap"> */}
+          <div className="product-display-area-container">
             {products?.map((p) => (
               <div className="card m-2" key={p._id}>
+                
                 <img
                   src={`https://dawaiwalla-backend-2pc2.onrender.com/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
-                  alt={p.name}
+                  alt={p.name}  onClick={() => navigate(`/product/${p.slug}`)}
                 />
                 <div className="card-body">
+                  <div onClick={() => navigate(`/product/${p.slug}`)}>
                   <div className="card-name-price">
                     <h5 className="card-title">{p.name}</h5>
                     <h5 className="card-title card-price">
@@ -408,16 +422,17 @@ const HomePage = () => {
                   <p className="card-text">
                     {p.description.substring(0, 50)}...
                   </p>
-                  <p>₹ {p.price} per medicine strip</p>
+                  <p className="card-desc">₹ {p.price} per medicine strip</p>
+                  </div>
                   <div className="card-name-price">
-                    <button
+                    {/* <button
                       className="btn btn-info ms-1"
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details
-                    </button>
-                    <button
-                      className="btn btn-dark ms-1"
+                    </button> */}
+                    {auth.user&&auth.user.role==1?(''):(<button
+                      className="btn btn-dark ms-1" style={{zIndex:50}}
                       onClick={() => {
                         setCart([...cart, p]);
                         localStorage.setItem(
@@ -428,7 +443,7 @@ const HomePage = () => {
                       }}
                     >
                       ADD TO CART
-                    </button>
+                    </button>)}
                   </div>
                 </div>
               </div>

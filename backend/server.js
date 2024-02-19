@@ -9,7 +9,10 @@ import productRoutes from "./routes/productRoutes.js";
 import pincodeRoutes from "./routes/pincodeRoutes.js";
 import cors from "cors";
 import bannerRoute from "./routes/bannerRoute.js";
-
+import orderRoutes from "./routes/ordersRoute.js";
+import footerRoutes from "./routes/footerRoutes.js";
+// import orderRoutes from "./routes/orderRoutes.js";
+// import purchaseRouter from "./routes/purchaseStore.js";
 //configure env
 dotenv.config();
 
@@ -30,8 +33,21 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 app.use("/api/v1/pincode", pincodeRoutes);
 app.use("/api/v1/banner", bannerRoute);
+app.use("/api/v1/orders", orderRoutes);
+app.use("/api/v1/footer", footerRoutes);
+
+// app.use("/api/v1/orders", orderRoutes);
+// app.use("/api/v1/purchaseOrder", purchaseRouter)
+
+// app.get("/api/v1/purchaseOrder",(req,res)=>{
+//   console.log("Request Received")
+//   res.send("Hello User Bhai!")
+// })
 
 //rest api
+app.post("/", (req, res) => {
+  res.send("<h1>Welcome to ecommerce app</h1>");
+});
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to ecommerce app</h1>");
 });

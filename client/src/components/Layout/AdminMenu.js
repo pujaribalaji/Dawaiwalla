@@ -42,6 +42,18 @@ const AdminMenu = () => {
           >
             Banners
           </NavLink>
+          <NavLink
+            to="/dashboard/admin/OrdersList"
+            className="list-group-item list-group-item-action"
+          >
+            Order List
+          </NavLink>
+          <NavLink
+            to="/dashboard/admin/TextManager"
+            className="list-group-item list-group-item-action"
+          >
+            Text Manager
+          </NavLink>
         </div>
       </div>
     </>

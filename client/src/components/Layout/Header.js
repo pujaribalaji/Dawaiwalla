@@ -10,7 +10,7 @@ import Modal from "./../Form/PincodeModal";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  const [cart] = useCart();
+  const [cart, setCart] = useCart();
   const categories = useCategory();
   const handleLogout = () => {
     setAuth({
@@ -18,6 +18,7 @@ const Header = () => {
       user: null,
       token: "",
     });
+    setCart([]);
     localStorage.removeItem("auth");
     toast.success("Logout Successfully");
   };
@@ -40,7 +41,11 @@ const Header = () => {
           <Link to="/" className="navbar-brand">
             🛒 DawaiWalla
           </Link>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <div
+            className="collapse navbar-collapse"
+            style={{ marginTop: 11 }}
+            id="navbarTogglerDemo01"
+          >
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <Modal />
             </ul>
@@ -129,13 +134,22 @@ const Header = () => {
                   </li>
                 </>
               )}
-              <li className="nav-item">
-                <Badge count={cart?.length} showZero>
-                  <NavLink to="/cart" className="nav-link">
-                    Cart
-                  </NavLink>
-                </Badge>
-              </li>
+              {auth.user && auth.user.role == 1 ? (
+                ""
+              ) : (
+                
+                <li className="nav-item" style={{display:'flex',margin:'auto',marginLeft:0}}>
+                  <Badge count={cart?.length} showZero>
+                    <NavLink to="/cart" className="dropdown-item" style={{color:'var(--bs-navbar-color)',fontSize:'17px'}}
+                    // className="nav-link"
+                    >
+                    <img src="images/cart.png" style={{width:'29px',height:'29px',display:'flex'}}></img>
+                    {/* <p>🛒</p> */}
+                      {/* Cart */}
+                    </NavLink>
+                  </Badge>
+                </li>
+              )}
             </ul>
           </div>
         </div>

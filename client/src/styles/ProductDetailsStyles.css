@@ -47,4 +47,26 @@
 
 .similar-products .card-img-top {
   height: 300px !important;
+  width: min-content;
+}
+.display-table-container{
+  /* background-color: aqua; */
+  display: flex;
+  margin: auto;
+  /* width: 35%; */
+  padding: 25px 50px;
+  justify-content: center;
+  
+}
+.display-table{
+  /* background-color: aqua; */
+  padding: 5px;
+  margin: auto;
+  width: 100%;
+}
+.display-table td,th{
+  text-align: center;
+  padding: 5px;
+  border: 1px solid black;
+  /* width: 100%; */
 }

@@ -5,16 +5,23 @@
 .home-page h1 {
   color: gray;
   font-family: "Playfair Display", serif;
+  /* color: black;
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  margin-top: 20px; */
 }
 
 .home-page {
   display: flex;
   flex-wrap: wrap;
 }
+
 .home-page .card {
   background-color: rgba(128, 128, 128, 0.097);
   width: 18rem;
+  /* background-color: white; */
 }
+
 .home-page .card-name-price {
   display: flex;
   flex-direction: row;
@@ -25,6 +32,7 @@
   color: green;
   font-weight: bold;
 }
+
 .home-page button {
   border-radius: 0;
   width: 100%;
@@ -36,15 +44,88 @@
 
 .home-page .card-text {
   color: rgb(90, 89, 89);
+  transition: 0.3s;
 }
 
 .home-page .card img:hover {
   transform: scale(0.9);
+  transition: 0.2s;
 }
 
 .home-page .card-img-top {
   height: 300px !important;
 }
+.product-display-area-container{
+  display: inline-flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card-desc{
+  /* font-size: 5px; */
+}
+@media (max-width:576px) {
+  .home-page .card {
+    background-color: rgba(128, 128, 128, 0.097);
+    width: 6rem;
+    /* width: 25%; */
+    /* height: 10%; */
+    /* height: 10rem; */
+    /* scale: 50%; */
+    /* background-color: rgb(202, 39, 39); */
+    /* height: 31.5rem; */
+    /* height: 18rem; */
+    height: auto;
+  }
+
+  .home-page .card-name-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1px;
+  }
+  .home-page .card-name-price .card-title{
+    font-size: 10px;
+  }
+  .card-desc{
+    font-size: 10px;
+  }
+
+  .home-page .card-price {
+    color: green;
+    font-weight: bold;
+    font-size: 5px;
+  }
+
+  .home-page button {
+    border-radius: 0;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 3px;
+    font-size: 8px;
+    font-weight: bold;
+  }
+
+  .home-page .card-text {
+    font-size: 8px;
+    color: rgb(90, 89, 89);
+    transition: 0.3s;
+  }
+
+  .home-page .card img:hover {
+    /* width: 50%; */
+    /* height: 50%; */
+    /* transform: scale(0.9); */
+    /* transition: 0.2s; */
+  }
+
+  .home-page .card-img-top {
+    height: 100px !important;
+    /* height: fit-content; */
+  }
+
+}
+
 /* ==================
 filters
 ============== */
@@ -55,12 +136,14 @@ filters
 }
 
 .ant-checkbox-wrapper:first-of-type {
-  margin-left: 8px;
+  /* margin-left: 8px; */
+  margin-left: 0;
 }
 
 .ant-checkbox-wrapper {
   margin: 2px;
 }
+
 .ant-radio-wrapper {
   margin-bottom: 5px !important;
   margin-left: 10px;
@@ -79,7 +162,9 @@ filters
   font-weight: bold;
   font-size: 20px !important;
 }
-
+.center-section{
+  margin: auto;
+}
 @media (max-width: 767px) {
   .small {
     display: flex;
@@ -87,6 +172,7 @@ filters
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
+
   .small .col-sm {
     flex: 0 0 auto;
     width: 45%;

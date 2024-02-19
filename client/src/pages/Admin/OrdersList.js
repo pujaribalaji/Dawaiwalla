@@ -2,34 +2,24 @@ import React, { useState, useEffect } from "react";
 import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
+import moment from "moment";
 import toast from "react-hot-toast";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [auth] = useAuth();
+
   const [pendingOrders, setPendingOrders] = useState([]);
   const [completedOrders, setCompletedOrders] = useState([]);
-
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        // Ensure auth.user has the user ID or adjust it based on your authentication context
-        const userId = auth.user ? auth.user.name : null;
-
-        if (!userId) {
-          // If there is no user ID, set orders to an empty array
-          setOrders([]);
-          setLoading(false);
-          return;
-        }
-
-        const { data } = await axios.get(
-          `http://localhost:8080/api/v1/orders/get-orders?userId=${userId}`
+        const { data, fetchData } = await axios.get(
+          "http://localhost:8080/api/v1/orders/get-orders"
         );
-
+        console.log("THe data is: ", data);
         setOrders(data.fetchData);
-        console.log(data);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -37,7 +27,16 @@ const Orders = () => {
     };
 
     fetchOrders();
-  }, [auth.user]); // Include auth.user in the dependency array
+  }, []);
+
+  useEffect(() => {
+    // Update pending and completed orders when 'orders' change
+    const pending = orders.filter((order) => order.status === "Pending");
+    const completed = orders.filter((order) => order.status === "Completed");
+
+    setPendingOrders(pending);
+    setCompletedOrders(completed);
+  }, [orders]);
 
   const handleDeleteOrder = async (id) => {
     try {
@@ -55,10 +54,13 @@ const Orders = () => {
     try {
       console.log(`Changing order status to ${newStatus} for ID:`, id);
       // Make the API call to update the order status
-      await axios.post(`http://localhost:8080/api/v1/orders/order-status`, {
-        status: newStatus,
-        orderId: id,
-      });
+      await axios.post(
+        `http://localhost:8080/api/v1/orders/order-status`,
+        {
+          status: newStatus,
+          orderId: id
+        }
+      );
 
       // Update local state to reflect the change
       const updatedOrders = orders.map((order) =>
@@ -85,7 +87,6 @@ const Orders = () => {
   const CompletedOrders = orders.filter(
     (order) => order.status === "Completed"
   );
-
   return (
     <Layout title={"All Orders"}>
       <div className="container-fluid p-3 m-3 dashboard">
@@ -208,6 +209,24 @@ const Orders = () => {
                     >
                       Delete Order
                     </button>
+
+                    <div>
+                      <h5>Change Status</h5>
+                      <button
+                        onClick={() => handleStatusChange(order._id, "Pending")}
+                        className="btn btn-primary m-1"
+                      >
+                        Pending
+                      </button>
+                      <button
+                        onClick={() =>
+                          handleStatusChange(order._id, "Completed")
+                        }
+                        className="btn btn-success m-1"
+                      >
+                        Completed
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   ""

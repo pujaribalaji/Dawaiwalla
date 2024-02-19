@@ -35,6 +35,8 @@ import StomachCategoryPage from "./pages/HealthCategory/Stomach";
 import Banners from "./pages/Admin/banners";
 import BannersLists from "./pages/Admin/BannersList";
 import UpdateBanner from "./pages/Admin/UpdateBanner";
+import OrdersList from "./pages/Admin/OrdersList";
+import TextManager from "./pages/Admin/TextManager";
 
 function App() {
   return (
@@ -62,6 +64,9 @@ function App() {
         <Route path="/HealthCategory/hair" element={<HairCategoryPage />} />
         <Route path="/search" element={<Search />} />
         <Route path="/dashboard" element={<PrivateRoute />}>
+          <Route path="/dashboard/user/orders/:id" element={<Orders />} />
+          <Route path="/dashboard/user/orders/:orderId" element={<Orders />} />
+
           <Route path="user" element={<Dashboard />} />
           <Route path="user/orders" element={<Orders />} />
           <Route path="user/profile" element={<Profile />} />
@@ -76,6 +81,8 @@ function App() {
           {/* <Route path="admin/users" element={<Users />} /> */}
           <Route path="admin/banner" element={<Banners />} />
           <Route path="admin/bannerslist" element={<BannersLists />} />
+          <Route path="admin/orderslist" element={<OrdersList />} />
+          <Route path="admin/textmanager" element={<TextManager />} />
           <Route
             path="admin/bannerslist/updatebanner"
             element={<UpdateBanner />}
