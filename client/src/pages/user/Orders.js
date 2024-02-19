@@ -8,8 +8,6 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [auth] = useAuth();
-  const [pendingOrders, setPendingOrders] = useState([]);
-  const [completedOrders, setCompletedOrders] = useState([]);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -50,11 +48,6 @@ const Orders = () => {
       console.log(error);
     }
   };
-
-  const PendingOrders = orders.filter((order) => order.status === "Pending");
-  const CompletedOrders = orders.filter(
-    (order) => order.status === "Completed"
-  );
 
   return (
     <Layout title={"All Orders"}>
