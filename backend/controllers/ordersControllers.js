@@ -1,4 +1,4 @@
-import Order from "../models/orderModel.js";
+import Order from "../models/OrderModel";
 import fs from "fs";
 import dotenv from "dotenv";
 
@@ -163,7 +163,7 @@ export const updateOrderController = async (req, res) => {
     const { items, totalPrice, status } = req.body;
 
     const order = await Order.findById(req.params.id);
-    console.log("The order is : ",order)
+    console.log("The order is : ", order);
     if (!order) {
       return res
         .status(404)
@@ -215,7 +215,7 @@ export const deleteOrderController = async (req, res) => {
 
 export const updateOrderStatusController = async (req, res) => {
   console.log("Order Received");
-  console.log(req.body)
+  console.log(req.body);
   try {
     const { orderId, status } = req.body;
 
@@ -252,4 +252,3 @@ export const updateOrderStatusController = async (req, res) => {
     });
   }
 };
-
