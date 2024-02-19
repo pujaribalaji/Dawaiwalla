@@ -50,7 +50,7 @@ const Banners = () => {
       bannerData.append("photo", photo);
 
       const { data } = await axios.post(
-        "https://dawaiwalla-backend.onrender.com/api/v1/banner/create-banner",
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/banner/create-banner",
         bannerData,
         {
           headers: {

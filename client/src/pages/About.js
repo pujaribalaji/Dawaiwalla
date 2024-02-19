@@ -9,7 +9,9 @@ const About = () => {
   useEffect(() => {
     // Fetch content from the server
     axios
-      .get("http://localhost:8080/api/v1/footer/footer-content/aboutUs")
+      .get(
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/footer/footer-content/aboutUs"
+      )
       .then((response) => {
         setContent(response.data.content);
       });

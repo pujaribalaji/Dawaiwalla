@@ -84,7 +84,7 @@ const CartPage = () => {
 
       // Make a POST request to create an order with the order data
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/orders/create-orders",
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/orders/create-orders",
         orderData
       );
 

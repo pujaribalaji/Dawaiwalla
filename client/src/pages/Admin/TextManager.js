@@ -17,7 +17,7 @@ const TextManager = () => {
     const fetchContent = async (contentType) => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/footer/footer-content/${contentType}`
+          `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/footer/footer-content/${contentType}`
         );
 
         const fetchedContent = response.data.content || "";
@@ -40,10 +40,13 @@ const TextManager = () => {
   const handleUpdateContent = async (contentType) => {
     try {
       // Update content in the database for the specified content type
-      await axios.post(`http://localhost:8080/api/v1/footer/footer-content`, {
-        contentType,
-        content: contents[contentType],
-      });
+      await axios.post(
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/footer/footer-content`,
+        {
+          contentType,
+          content: contents[contentType],
+        }
+      );
 
       toast.success(`${contentType} content updated successfully`);
     } catch (error) {

@@ -25,7 +25,7 @@ const Orders = () => {
         }
 
         const { data } = await axios.get(
-          `http://localhost:8080/api/v1/orders/get-orders?userId=${userId}`
+          `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/orders/get-orders?userId=${userId}`
         );
 
         setOrders(data.fetchData);
@@ -43,7 +43,7 @@ const Orders = () => {
     try {
       console.log("Deleting order with ID:", id);
       await axios.delete(
-        `http://localhost:8080/api/v1/orders/delete-order/${id}`
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/orders/delete-order/${id}`
       );
       toast.success("Order Deleted Successfully");
     } catch (error) {
@@ -55,10 +55,13 @@ const Orders = () => {
     try {
       console.log(`Changing order status to ${newStatus} for ID:`, id);
       // Make the API call to update the order status
-      await axios.post(`http://localhost:8080/api/v1/orders/order-status`, {
-        status: newStatus,
-        orderId: id,
-      });
+      await axios.post(
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/orders/order-status`,
+        {
+          status: newStatus,
+          orderId: id,
+        }
+      );
 
       // Update local state to reflect the change
       const updatedOrders = orders.map((order) =>

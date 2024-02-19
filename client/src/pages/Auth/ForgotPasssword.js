@@ -14,12 +14,12 @@ const ForgotPasssword = () => {
 
   // form function
   const handleSubmit = async (e) => {
-    console.log(email,newPassword,answer)
+    console.log(email, newPassword, answer);
     e.preventDefault();
     try {
       const res = await axios.post(
         // "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/auth/forgot-password",
-        "http://localhost:8080/api/v1/auth/forgot-password",
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/auth/forgot-password",
         {
           email,
           newPassword,

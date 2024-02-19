@@ -8,7 +8,9 @@ const Policy = () => {
   useEffect(() => {
     // Fetch content from the server
     axios
-      .get("http://localhost:8080/api/v1/footer/footer-content/privacyPolicy")
+      .get(
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/footer/footer-content/privacyPolicy"
+      )
       .then((response) => {
         setContent(response.data.content);
       });

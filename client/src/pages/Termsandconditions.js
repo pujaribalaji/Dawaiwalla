@@ -1,4 +1,4 @@
-import React, { useEffect ,useState} from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 import axios from "axios";
 
@@ -7,7 +7,9 @@ const Termsandconditions = () => {
   useEffect(() => {
     // Fetch content from the server
     axios
-      .get("http://localhost:8080/api/v1/footer/footer-content/termsConditions")
+      .get(
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/footer/footer-content/termsConditions"
+      )
       .then((response) => {
         setContent(response.data.content);
       });
@@ -18,7 +20,6 @@ const Termsandconditions = () => {
       <div id="display" dangerouslySetInnerHTML={{ __html: content }}></div>
     </Layout>
   );
-
 };
 
 export default Termsandconditions;

@@ -1,4 +1,4 @@
-import React, { useEffect ,useState} from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "./../components/Layout/Layout";
 import { BiMailSend, BiPhoneCall, BiSupport } from "react-icons/bi";
 import axios from "axios";
@@ -8,7 +8,9 @@ const Contact = () => {
   useEffect(() => {
     // Fetch content from the server
     axios
-      .get("http://localhost:8080/api/v1/footer/footer-content/contactUs")
+      .get(
+        "https://dawaiwalla-backend-2pc2.onrender.com/api/v1/footer/footer-content/contactUs"
+      )
       .then((response) => {
         setContent(response.data.content);
       });
