@@ -22,7 +22,7 @@ const PincodeModal = () => {
     try {
       // console.log(pcode);  // running
       const { data } = await axios.get(
-        `/api/v1/pincode/single-pincode/${pcode}`
+        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/pincode/single-pincode/${pcode}`
       );
       console.log(data.pincode);
       if (data.pincode === null) {
