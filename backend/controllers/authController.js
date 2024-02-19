@@ -1,7 +1,7 @@
 import userModel from "../models/userModel.js";
 import { comparePassword, hashPassword } from "../helpers/authHelper.js";
 import { requireSignIn } from "../middlewares/authMiddleware.js";
-import orderModel from "../models/orderModel.js";
+import Order from "../models/OrderModel.js";
 import JWT from "jsonwebtoken";
 
 export const registerController = async (req, res) => {
@@ -118,7 +118,7 @@ export const loginController = async (req, res) => {
 //forgotPasswordController
 
 export const forgotPasswordController = async (req, res) => {
-  console.log("Forgot Password")
+  console.log("Forgot Password");
   try {
     const { email, answer, newPassword } = req.body;
     if (!email) {

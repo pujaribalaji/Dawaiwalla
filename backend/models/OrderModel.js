@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
-  // user: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "users", // Assuming you have a User model
-  //   required: true,
-  // },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users", // Assuming you have a User model
+    required: true,
+  },
   items: [
     {
       name: String,
@@ -23,8 +23,8 @@ const orderSchema = new mongoose.Schema({
     default: "Completed",
   },
   user: {
-    type: String
-  }
+    type: String,
+  },
   // user: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: "User", // Assuming your User model is named "User"
