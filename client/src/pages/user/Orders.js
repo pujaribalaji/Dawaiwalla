@@ -51,39 +51,6 @@ const Orders = () => {
     }
   };
 
-  const handleStatusChange = async (id, newStatus) => {
-    try {
-      console.log(`Changing order status to ${newStatus} for ID:`, id);
-      // Make the API call to update the order status
-      await axios.post(
-        `https://dawaiwalla-backend-2pc2.onrender.com/api/v1/orders/order-status`,
-        {
-          status: newStatus,
-          orderId: id,
-        }
-      );
-
-      // Update local state to reflect the change
-      const updatedOrders = orders.map((order) =>
-        order._id === id ? { ...order, status: newStatus } : order
-      );
-      setOrders(updatedOrders);
-
-      // Update pending and completed orders separately
-      const pending = updatedOrders.filter(
-        (order) => order.status === "Pending"
-      );
-      const completed = updatedOrders.filter(
-        (order) => order.status === "Completed"
-      );
-
-      setPendingOrders(pending);
-      setCompletedOrders(completed);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const PendingOrders = orders.filter((order) => order.status === "Pending");
   const CompletedOrders = orders.filter(
     (order) => order.status === "Completed"
@@ -138,24 +105,6 @@ const Orders = () => {
                     >
                       Delete Order
                     </button>
-
-                    <div>
-                      <h5>Change Status</h5>
-                      <button
-                        onClick={() => handleStatusChange(order._id, "Pending")}
-                        className="btn btn-primary m-1"
-                      >
-                        Pending
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleStatusChange(order._id, "Completed")
-                        }
-                        className="btn btn-success m-1"
-                      >
-                        Completed
-                      </button>
-                    </div>
                   </div>
                 ) : (
                   ""
